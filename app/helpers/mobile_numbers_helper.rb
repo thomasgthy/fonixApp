@@ -1,5 +1,6 @@
 require 'zensend'
-module MobileNumberHelper
+module MobileNumbersHelper
+	#Helper method called in the controller that process the request to the API
 	def api_call(mobile_number)
 		client = ZenSend::Client.new(Rails.application.secrets.api_key)
 		begin
