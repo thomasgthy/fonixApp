@@ -1,5 +1,8 @@
 <%= form_tag(confirm_code_path(mobile_number)) do %>
-  <%= label_tag(:code, "Put the code you have received") %>
-  <%= text_field_tag(:code) %>
-  <%= submit_tag("Confirm") %>
+  <label class="col-2 col-form-label">Enter the code you have received</label>
+  <div class="col-10">
+  	<%= text_field_tag(:code) %>
+  </div>
+  <br/>
+  <%= submit_tag("Confirm", class: "btn btn-default") %>
 <% end %>

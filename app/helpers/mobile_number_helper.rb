@@ -1,6 +1,6 @@
 require 'zensend'
 module MobileNumberHelper
-	def api_call(code, number)
+	def api_call(mobile_number)
 		client = ZenSend::Client.new(Rails.application.secrets.api_key)
 		begin
 		  result = client.send_sms({
@@ -8,12 +8,13 @@ module MobileNumberHelper
 		    # Add your number here to send a message to yourself
 		    # The number should be in international format.
 		    # For example FR numbers will be 33612345678
-		    numbers: [number],
-		    body: "Verify the transaction by entering the following code: #{code}"
+		    numbers: [mobile_number.mobile_number],
+		    body: "Verify the transaction by entering the following code: #{mobile_number.code}"
 		  })
-
+		  return true
 		rescue ZenSend::ZenSendException => e
-		  puts "ZenSendException: #{e.parameter} => #{e.failcode}"
+		  mobile_number.errors.add("Exception raised in the API call: ", e.failcode)
+		  return false
 		end
 	end
 end

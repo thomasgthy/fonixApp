@@ -10,8 +10,10 @@
       </ul>
     </div>
   <% end %>
-  
-<%= f.telephone_field(:mobile_number) %>
-
-<%= f.submit "Validate mobile number" %>
+<label class="col-2 col-form-label">Enter a mobile number with international format</label>
+<div class="col-10">
+  <%= f.telephone_field(:mobile_number) %>
+</div>
+<br/>
+<%= f.submit "Validate mobile number", class: "btn btn-default" %>
 <% end %>
