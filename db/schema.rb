@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180908175431) do
 
   create_table "mobile_numbers", force: :cascade do |t|
     t.integer "mobile_number"
-    t.integer "code"
+    t.string "code"
     t.string "ip_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
